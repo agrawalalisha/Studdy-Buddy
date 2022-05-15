@@ -1,0 +1,67 @@
+{% extends base_template %}
+
+{% block content %}
+    <div class="profile-form-container">
+        <title>Code of Conduct</title>
+        <h1>
+            Code of Conduct
+        </h1>
+        <h2>
+            Engagement & Community Rules
+        </h2>
+
+        <ul>
+            <li>Treat all users and colleagues fairly and equally. Stimulate conversation, be respectful of others' views, and refrain 
+                from personal attacks.</li>
+            <li>Don't share the posts of others without permission.</li>
+        </ul>
+        <h2>
+            Etiquette
+        </h2>
+        <ul>
+            <li>All defamatory, abusive, profane, threatening, offensive, or illegal material is strictly prohibited.</li>
+            <li>Discriminatory, hostile, or intimidating messages or language will not be tolerated, whether based on a person's race, 
+                ethnicity, culture, national origin, social or economic class, educational level, sex, sexual orientation, gender 
+                identity and expression, age, size, family status, political belief, religion, or mental or physical ability.</li>
+            <li>Studdy Buddy strives to create and maintain a community in which people of many different backgrounds and cultures are 
+                treated with respect.</li>
+            <li>Be mindful and respectful of linguistic background &mdash; while the language for online fora discussions is mostly 
+                English (unless otherwise specified), remember not everybody is a native English speaker/writer.</li>
+            <li>Include only relevant portions of the original message in replies.</li>
+            <li>Avoid administrative messages, such as removing me from the session (use the web interface to change your personal 
+                settings).</li>
+            <li>Do not spam messages.</li>
+            <li>Don't publicly post messages.</li>
+            <li>Use caution when discussing. The information posted on the lists and in the libraries is available for all members to 
+                see. </li>
+        </ul>
+        <h2>
+            Privacy Policy
+        </h2>
+        <p>
+            Studdy Buddy is committed to respecting the privacy of our members and of visitors to our site. We do not sell, rent, 
+            or share any personally identifiable information shared by members.
+        </p>
+        {% if no_profile %}
+        <h4>
+            By continuing to create your profile, you are agreeing to the Code of Conduct
+        </h4>
+        <a href="{% url 'create_profile' %}"><button class="btn btn-primary">Accept and Create Profile</button></a>
+        {% endif %}
+    </div>
+
+    <!-- Beginning of footer -->
+    </div>
+    </section>
+
+    <footer>
+    <nav class="navbar fixed-bottom navbar-dark bg-primary">
+        <div class="container-fluid">
+        <ol class="breadcrumb justify-content-end">
+            {% if no_profile %}
+            <li class="breadcrumb-item active">Dashboard</li>
+            {% else %}
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            {% endif %}
+            <li class="breadcrumb-item active">Code of Conduct</li>
+{% endblock %}

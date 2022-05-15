@@ -1,0 +1,69 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+<div class="profile-form-container" style="margin: auto;">
+    <h3>Edit Profile</h3>
+    <div class="container">  
+      <form method="post">
+      {% csrf_token %}
+      <div class="row"> 
+        <div class="col-md-3 text-end">
+          <p class="create-profile-field">
+          First Name:
+          </p>
+          <p class="create-profile-field">
+          Last Name:
+          </p>
+          <p class="create-profile-field">
+            Email:
+          </p>
+          <p class="create-profile-field" style="margin-bottom: 0;">
+          Preferred Pronouns:
+          </p>
+          <p style="margin-top: 25px;">
+          Year:
+          </p>
+          <p style="margin-top: 24px;">
+          Major:
+          </p>
+          <p style="margin-top: 45px;">
+          Bio:
+          </p>
+        </div>
+        <div class="col-md-8">
+          {{form.first_name}}
+          <br>
+          {{form.last_name}}
+          <br>
+          {{form.email}}
+          <br>
+          {{form.pronouns}}
+          <br>
+          {{form.year}}
+          <br>
+          {{form.major}}
+          <br>
+          {{form.bio}}
+          <br>
+        </div>
+      </div> 
+      <input type="hidden" name="email" value="{{ user.email }}">
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a class="btn btn-danger" href="{% url 'view_profile' %}">Cancel</a>
+      </div>
+      </form>
+    </div>
+</div>
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+  <nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+      <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'view_profile' %}">Profile</a></li>
+        <li class="breadcrumb-item active">Edit Profile</li>
+{% endblock %}

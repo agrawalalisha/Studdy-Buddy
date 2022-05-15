@@ -1,0 +1,83 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+
+
+<!-- <div style="text-align: center;"> -->
+    <h2>Enter A Class Forum</h2>
+<!-- </div> -->
+
+<p>Class forums are meant to be places to discuss classes and class content and ask and answer questions. All other users who 
+  enter the class forum can see your messages, so be sure you are following StuddyBuddy's Code of Conduct! 
+</p>
+{% if error %}
+  <div class="alert alert-warning" role="alert">{{ error }}</div>
+{% endif %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <form method="post" action="{% url 'forum' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <h5>Select the class you want to study for:</h5>
+          <input class="form-control" list="course-list" id="searchbar" onkeyup="profileSearch()" name="room_name" placeholder="Click to see your courses or search (i.e. CS 3240)">
+          <datalist id="course-list">
+            {% for course in courses %}
+              <option style="max-width: 200px" value="{{ course.name }}">
+            {% endfor %}
+          </datalist>
+        </div>
+        <div class="mb-3">
+          <label for="username">Enter a username:</label>
+          <h6>Your username is what will be displayed to other users.</h6>
+          <input type="text" name="username" id="username" class="form-control">
+        </div>
+        <!-- <input type="submit" value="Enter Room"> -->
+        <button type="submit" class="btn btn-primary">Enter Room</button>
+      </form>
+    </div>
+    
+    <div class="col-md-1"></div>
+
+    <div class="col-md-4">
+      <h5>Other students in this class:</h5>
+      <div class="alert alert-warning" id="none-found" role="alert" style="display: none;"></div>
+      <ul id="profile-list">      
+        {% for obj in profiles %}
+        <li class="profile-card" style="display: none; margin-bottom: 20px;">  
+          {% for course in obj.courses %}
+            <input type="hidden" value="{{ course.name }}" class="hidden-course">
+          {% endfor %}
+          <form method="post" action="{% url 'chat:all_rooms' %}">
+          {% csrf_token %}
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ obj.profile.first_name }} {{ obj.profile.last_name }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ obj.profile.pronouns }}</h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ obj.profile.year }}</li>
+                <li class="list-group-item">{{ obj.profile.major }}</li>
+              </ul>
+              <a href="{% url 'matchingprofile' obj.profile.id %}" class="card-link">View profile</a>
+              <input type="hidden" name="email" value="{{ obj.profile.email }}">
+            </div>
+          </div>
+          </form>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+  <nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+      <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Class Forums</li>
+{% endblock %}

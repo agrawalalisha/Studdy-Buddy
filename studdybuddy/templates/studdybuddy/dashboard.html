@@ -1,0 +1,73 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <h3>Instructions: How to Find a Buddy</h3>
+      <p>
+        1. Make sure you have your classes saved with your profile. Go to Settings → Edit Classes and select your classes from the drop 
+        down menu and click Save. 
+      </p>
+      <p>
+        2. Go to the Find Buddies tab and select your class from the dropdown menu. If there are other students in the class with 
+        profiles, their names should pop up. From here, you can either view their profile or start a chat. 
+      </p>
+      <p>
+        3. Find existing chats under Chats in the navbar. Or, try visiting Class Forums to have a group conversation with everyone 
+        in a certain class. 
+      </p>
+      <p>
+        4. After finding a time to study with your new buddy, you can create schedule a study session with them by visiting Study Sessions.
+        Or, try joining an existing session for one of your classes using the search function. All of your past and upcoming study sessions 
+        will be displayed here on your dashboard. 
+      </p>
+    </div>
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-6">
+      <h3>Your Upcoming Study Sessions</h3>
+      <div class="col-md-8">
+        {% if dates %}
+        <ul>
+          {% for date in dates %}
+          <li>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ date.description }}</h5>
+                <h6>{{ date.course }}</h6>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"> With
+                    {% for profile in date.participants.all %}
+                    {% if forloop.last and not forloop.first%}and {{ profile.first_name }} {{profile.last_name}} {% endif %}
+                    {% if not forloop.last %}{{ profile.first_name }} {{profile.last_name}}, {% endif %}
+                    {% if forloop.last and forloop.first %}{{ profile.first_name }} {{profile.last_name}} {% endif %}
+                    {% endfor %}
+                  </li>
+                  <li class="list-group-item">{{date.month}} {{date.day}}, {{date.year}} at {{ date.hour }}:{{date.minute}}</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <br>
+          {% endfor %}
+        </ul>
+        {% else %}
+          <div class="alert alert-warning" role="alert">You don't have any sessions yet</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+<nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+    <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item active">Dashboard</li>
+{% endblock %}

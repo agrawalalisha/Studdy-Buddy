@@ -1,0 +1,41 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+  <h2>Your Chats</h2>
+  <div class="row">
+    {% for room in rooms %}
+    {% if room.user1.email == user.email or room.user2.email == user.email %}
+    <div class="col-md-3" style="margin-bottom: 20px;">
+      <div class="card rounded-edges">
+        <div class="card-body">
+          <p class="card-title">{{room.name}}</p>
+          <div class="content">
+            <p>
+              {{room.description}}
+            </p>
+            <a href="/rooms/{{room.slug}}" class="btn btn-primary">Join Room</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+<nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+    <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Chats</li>
+        
+{% else %}
+    {% url "studdybuddy:logout" %}
+{% endif %}         
+{% endblock %}

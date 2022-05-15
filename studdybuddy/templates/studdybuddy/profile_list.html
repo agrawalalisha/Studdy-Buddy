@@ -1,0 +1,61 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+
+<h2>Find Buddies</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+    <h5>Select the class you want to study for:</h5>
+    <input class="form-control" list="course-list" id="searchbar" onkeyup="profileSearch()" placeholder="Click to see your courses or search (i.e. CS 3240)">
+    <datalist id="course-list">
+      {% for course in courses %}
+        <option style="max-width: 200px" value="{{ course.name }}">
+      {% endfor %}
+    </datalist>
+    </div>
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-4">
+      <h5>Start a chat with someone in your class:</h5>
+      <div class="alert alert-warning" id="none-found" role="alert" style="display: none;"></div>
+      <ul id="profile-list">      
+        {% for obj in profiles %}
+        <li class="profile-card" style="display: none; margin-bottom: 20px;">  
+          {% for course in obj.courses %}
+            <input type="hidden" value="{{ course.name }}" class="hidden-course">
+          {% endfor %}
+          <form method="post" action="{% url 'chat:all_rooms' %}">
+          {% csrf_token %}
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ obj.profile.first_name }} {{ obj.profile.last_name }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ obj.profile.pronouns }}</h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ obj.profile.year }}</li>
+                <li class="list-group-item">{{ obj.profile.major }}</li>
+              </ul>
+              <a href="{% url 'matchingprofile' obj.profile.id %}" class="btn btn-primary">View Full Profile</a>
+              <input type="hidden" name="email" value="{{ obj.profile.email }}">
+              <button type="submit" class="btn btn-primary">Start Chat</button>
+            </div>
+          </div>
+          </form>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+  <nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+      <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Find Buddies</li>
+{% endblock %}

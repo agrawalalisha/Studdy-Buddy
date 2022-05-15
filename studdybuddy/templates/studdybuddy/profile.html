@@ -1,0 +1,60 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+
+<h3>{{ profile.first_name }} {{ profile.last_name }}'s Profile</h3>
+<div class="row"> 
+  <div class="col-md-3 text-end">
+    <p class="create-profile-field">
+    First Name:
+    </p>
+    <p class="create-profile-field">
+    Last Name:
+    </p>
+    <p class="create-profile-field">
+      Email:
+    </p>
+    <p class="create-profile-field">
+    Preferred Pronouns:
+    </p>
+    <p class="create-profile-field">
+      Year:
+    </p>
+    <p class="create-profile-field">
+    Major:
+    </p>
+    <p style="margin-top: 45px;">
+    Bio:
+    </p>
+  </div>
+  <div class="col-md-8">
+    {{form.first_name}}
+    <br>
+    {{form.last_name}}
+    <br>
+    {{form.email}}
+    <br>
+    {{form.pronouns}}
+    <br>
+    {{form.year}}
+    <br>
+    {{form.major}}
+    <br>
+    {{form.bio}} 
+    <br>
+  </div>
+</div> 
+ 
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+  <nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+      <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'profile_list' %}">Find Buddies</a></li>
+        <li class="breadcrumb-item active">{{ profile.first_name }} {{ profile.last_name }}'s Profile</li>
+
+{% endblock %}

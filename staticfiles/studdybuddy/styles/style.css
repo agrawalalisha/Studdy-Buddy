@@ -1,0 +1,136 @@
+/* 
+   CSS Reset
+   http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body, html {
+    height: 100%;
+  }
+
+.body-container {
+	/* width: 80%;
+	margin-left: auto;
+	margin-right: auto; */
+	margin: 0 auto;
+    max-width: 1400px;
+    padding: 1% 4.16667% 6%;
+}
+
+.navbar-brand {
+	cursor: default;
+	padding-top: 0rem;
+	color: orange;
+}
+
+.img-opac {
+	filter: opacity(90%);
+}
+
+#myInput {
+    padding: 20px;
+    margin-top: -6px;
+    border: 0;
+    border-radius: 0;
+    background: #f1f1f1;
+  }
+
+.create-profile-field {
+    margin-top: 24px;
+    margin-bottom: 50px;
+}
+
+.container::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.container img {
+	float: left;
+	max-width: 60px;
+	width: 100%;
+	margin-right: 20px;
+	border-radius: 50%;
+}
+
+.container img.right {
+	float: right;
+	margin-left: 20px;
+	margin-right:0;
+}
+
+.time-right {
+	float: right;
+	color: #aaa;
+}
+
+.time-left {
+	float: left;
+	color: #999;
+}
+
+
+.login {
+	background:url('https://dh3vbjnk0bnfa.cloudfront.net/static/centralauth/images/btn-login.png') no-repeat 5px 5px #484B4F;
+	width: 100px;
+	cursor:pointer;
+	border-radius:50px;
+	padding:10px 20px 10px 0;
+	color:White;
+	font-size:14px;
+	text-align:left;
+	color:white;
+	text-indent:40px;
+	display:block;
+	margin:0 auto;
+}
+
+.rounded-edges {
+	border-radius: 0.25rem;
+}

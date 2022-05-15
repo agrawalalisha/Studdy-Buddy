@@ -1,0 +1,49 @@
+login page picture
+https://www.highsnobiety.com/static-assets/thumbor/kNSSQZMt2yIgfr4H50tVMaw2ulU=/1200x800/www.highsnobiety.com/static-assets/wp-content/uploads/2020/02/25170803/lofi-girl.jpg
+
+about page picture
+https://www.flaticon.com/free-icons/network
+
+favicon
+https://favicon.io/emoji-favicons/books
+
+bootstrap components:
+https://getbootstrap.com/docs/5.1/components/
+https://getbootstrap.com/docs/4.0/components/jumbotron/
+
+bootswatch theme
+https://bootswatch.com/flatly/
+
+javascript docs
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+django sources:
+https://docs.djangoproject.com/en/4.0/
+https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
+https://docs.djangoproject.com/en/4.0/topics/db/examples/many_to_many/
+
+google login:
+https://www.section.io/engineering-education/django-google-oauth/
+https://dev.to/mdrhmn/django-google-authentication-using-django-allauth-18f8
+https://www.tutorialspoint.com/google-authentication-in-django
+https://medium.com/geekculture/getting-started-with-django-social-authentication-80ee7dc26fe0
+https://python-social-auth.readthedocs.io/en/latest/configuration/django.html
+
+twilio docs:
+https://www.twilio.com/docs
+https://www.twilio.com/blog/2018/05/build-chat-python-django-applications-programmable-chat.html
+
+UVA schedule API
+https://devhub.virginia.edu/API
+
+course forum code:
+https://channels.readthedocs.io/en/latest/tutorial/index.html
+https://dev.to/earthcomfy/getting-started-with-django-channels-a-simple-chat-app-2a7m
+https://smazee.com/blog/realtime-chat-app-using-python
+
+code examples:
+https://stackoverflow.com/questions/27939027/best-way-to-implement-background-image-on-html-or-body
+https://stackoverflow.com/questions/65163090/django-dynamic-filters-in-a-webpage
+https://stackoverflow.com/questions/21614941/django-models-user-id
+https://stackoverflow.com/questions/5430470/retrieving-list-items-from-request-post-in-django-python
+https://stackoverflow.com/questions/15050571/django-csrf-token-in-search-result-url

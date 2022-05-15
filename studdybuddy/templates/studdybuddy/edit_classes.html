@@ -1,0 +1,64 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+
+<h2>Edit Classes</h2>
+<div class="container">
+  <div class="row">
+    <!-- class searching -->
+    <div class="col-md-5">
+    <h5>Open the dropdown menu and begin typing your class:</h5>
+    <input class="form-control" list="course-list" id="edit-classes-searchbar" placeholder="Type to search...">
+    <datalist id="course-list">
+      {% for course in courselist %}
+        <option style="max-width: 200px" value="{{course}}">
+      {% endfor %}
+    </datalist>
+    </div>
+
+    <div class="col-md-1"></div>
+
+    <!-- added classes -->
+    <div class="col-md-4">
+      <h5>Current Classes:</h5>
+      <form method="post">
+      {% csrf_token %}
+      <ul id="added-courses">      
+        {% for course in courses %}
+        <li class="course-card" id="{{ course }}">     
+          <div class="card">
+            <div class="row card-body">
+                <div class="col-md-10">
+                    <span class="card-title">{{ course.name }}</span>
+                </div>
+              <div class="col-md-2">              
+                <button type="button" class="btn-close" style="color: darkred;" aria-label="Close">
+                    X
+                </button>
+          </div>
+        </li>
+        <input type="hidden" name="{{ course.name }}">
+        <br>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-2">
+      <button class="btn btn-primary" type="submit">Save</button>
+      <a class="btn btn-danger" href="{% url 'view_profile' %}">Cancel</a>
+    </div>
+    </form>
+  </div>
+</div>
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+  <nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+      <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Edit Classes</li>
+{% endblock %}

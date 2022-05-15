@@ -1,0 +1,28 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+<!-- {% load static %} -->
+<div class="body-container text-center">
+    <h1>About Studdy Buddy</h1>
+    <p>Studdy Buddy is a web app created for the UVA CS3240 course project. Its purpose is to match UVA students with other
+        students who are looking to study for a specific class on a given date. Users can find study partners by selecting a 
+        class they're in and starting a chat with another student. Negotiate a time to meet and you can schedule a study 
+        session together!
+    </p>
+    <!-- <p>        
+        After logging in with a 
+        Google account, users can enter their student information and immediately get started. Good luck studying!
+    </p> -->
+    <img src="{% static 'images/social_icon.png' %}" class="img-fluid img-opac" alt="social connection icon" style="max-height: 400px;">
+</div>
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+  <nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+      <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active">About</li>
+{% endblock %}

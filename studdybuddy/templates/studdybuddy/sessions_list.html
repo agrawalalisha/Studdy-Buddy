@@ -1,0 +1,118 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+<div>
+    <h3>All Study Sessions:</h3>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+<!--      new stuff-->
+      <h5>Select a course to see available study sessions:</h5>
+        <form method="get"> 
+            <!-- {% csrf_token %} -->
+            <datalist id="course-list">
+            {% for course in courses %}
+                <option style="max-width: 200px" value="{{ course.name }}">
+            {% endfor %}
+            </datalist>
+            <input name="selected" class="form-control" list="course-list" id="searchbar" onkeyup="profileSearch()" 
+            placeholder="Click to see courses">
+        
+
+        <!-- rileys stuff -->
+      <!-- <input class="form-control" list="course-list" id="searchbar" onkeyup="profileSearch()" placeholder="Click to see courses">
+      <datalist id="course-list">
+        {% for course in courses %}
+          <option style="max-width: 200px" value="{{ course.name }}">
+        {% endfor %}
+      </datalist> -->
+      <h5 style="margin-top: 24px;">Or create a new study session:</h5>
+      <a class="btn btn-primary" href="{% url 'createstudysession' %}">Make a new Study Session</a>
+    </div>
+      <div class="col-md-2" style="margin-top: 56px;">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      </div>
+<!--working stuff-->
+    <div class="col-md-4">
+      {% if error %}
+        <div class="alert alert-warning" role="alert">{{ error }}</div>
+      {% endif %}
+      <ul>
+        {% for date in dates %}
+          {% if date.course == selected %}
+        <li>
+          <form method="post">
+          {% csrf_token %}
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ date.description }}</h5>
+              <h6>{{ date.course }}</h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"> With
+                  {% for profile in date.participants.all %}
+                    {% if forloop.last and not forloop.first%}and {{ profile.first_name }}{% endif %}
+                    {% if not forloop.last %}{{ profile.first_name }}, {% endif %}
+                    {% if forloop.last and forloop.first %}{{ profile.first_name }}{% endif %}
+                  {% endfor %}
+                </li>
+                <li class="list-group-item">{{date.month}} {{date.day}}, {{date.year}} at {{ date.hour }}:{{date.minute}}</li>
+                <input type="hidden" name="date" value="{{ date.description }}">
+                <button type="submit" class="btn btn-primary">Join Session</button>
+              </ul>
+            </div>
+          </div>
+          </form>
+        </li>
+        <br>
+          {% endif %}
+      {% endfor %}
+      </ul>
+    </div>
+
+    <!-- rileys stuff -->
+    <!-- <div class="col-md-4">
+      <h5>Available Study Sessions</h5>
+      <div class="alert alert-warning" id="none-found" role="alert" style="display: none;"></div>
+      <ul class="profile-list">
+        {% for date in dates %}
+        <li class="card profile-card" style="display: hidden;">
+          <div>
+            <input type="hidden" value="{{ date.course }}" class="hidden-course">
+            <div class="card-body">
+              <h5 class="card-title">{{ date.description }}</h5>
+              <h6>{{ date.course }}</h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"> With
+                  {% for profile in date.participants.all %}
+                    {% if forloop.last and not forloop.first%}and {{ profile.first_name }}{% endif %}
+                    {% if not forloop.last %}{{ profile.first_name }}, {% endif %}
+                    {% if forloop.last and forloop.first %}{{ profile.first_name }}{% endif %}
+                  {% endfor %}
+                </li>
+                <li class="list-group-item">{{date.month}} {{date.day}}, {{date.year}} at {{ date.hour }}:{{date.minute}}</li>
+                <input type="hidden" name="date" value="{{ date.description }}">
+                <button type="submit">Join Session</button>
+              </ul>
+            </div>
+          </div>
+          </form>
+        </li>
+        <br>
+      {% endfor %}
+      </ul>
+    </div>   -->
+  </div>
+</div>
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+<nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+    <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Study Sessions</li>
+{% endblock %}

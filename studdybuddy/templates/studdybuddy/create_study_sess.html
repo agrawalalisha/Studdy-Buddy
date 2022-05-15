@@ -1,0 +1,79 @@
+{% extends "studdybuddy/base.html" %}
+{% block content %}
+<div class="profile-form-container" style="margin: auto;">
+    <h3 style="margin-bottom: 20px;">Schedule a Study Session</h3>
+    {% if error %}
+        <div class='alert alert-warning'>{{ error }}</div>
+    {% endif %}
+    <div class="container">  
+        <form method="post">
+        {% csrf_token %}
+        <div class="row"> 
+          <div class="col-md-3 text-end">
+            <label for="id-course" style="margin-top: 7px">
+            Course:
+            </label>
+            <p style="margin-top: 29px">
+            Month:
+            </p>
+            <p>
+            Day:
+            </p>
+            <p class="create-profile-field" style="margin-bottom: 0;">
+            Year:
+            </p>
+            <p style="margin-top: 24px;">
+            Hour:
+            </p>
+            <p style="margin-top: 24px;">
+            Minute:
+            </p>
+            <p style="margin-top: 24px;">
+            Name for Session:
+            </p>
+            <p style="margin-top: 28px;">
+            Studdy Buddies:
+            </p>
+        </div>
+        <div class="col-md-4" style="margin-bottom: 14px;">
+            <input name="course" class="form-control" list="course-list" id="id-course" placeholder="Click to see courses">
+            <datalist id="course-list">
+                {% for course in courselist %}
+                    <option style="max-width: 200px" value="{{course.name}}">
+                {% endfor %}
+            </datalist>
+            <div style="margin-top: 23px;"></div>
+            {{form.month}}
+            <div style="margin-top: 16px;"></div>
+            {{form.day}}
+            <div style="margin-top: 24px;"></div>
+            {{form.year}}
+            <div style="margin-top: 24px;"></div>
+            {{form.hour}}
+            <div style="margin-top: 24px;"></div>
+            {{form.minute}}
+            <div style="margin-top: 2px;"></div>
+            {{form.description}}
+            <div style="margin-top: 2px;"></div>
+            {{ form.participants}}
+          </div>
+        </div> 
+        <div class="text-center">
+          <button class="btn btn-primary" type="submit">Create Session</button>
+        </div>
+        </form>
+    </div>
+</div>
+
+<!-- Beginning of footer -->
+</div>
+</section>
+
+<footer>
+  <nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <div class="container-fluid">
+      <ol class="breadcrumb justify-content-end">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'sessions' %}">Study Sessions</a></li>
+        <li class="breadcrumb-item active">Schedule Study Session</li>
+{% endblock %}
